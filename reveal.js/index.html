@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					# Text and automated biases
+				</section>
+				<section data-background-image="https://psmag.com/.image/t_share/MTQ5NjM2MTg5NzU2ODYwMjE4/library.jpg">
+				</section>
+				<section data-markdown >
+					## Natural languages are the base human communication
+					- we learn from books of all kinds about complex topics and keep ourself updated
+				</section>
+				<section>
+					<section data-markdown>
+						## Usefull applications
+						- structure big amounts of text (by topics or certain words)
+						- understand the meaning of text
+						- voice recognition
+						- text generation (summaries, q&a systems)
+					</section>
+					<section data-markdown>
+						## Common Tasks
+						[AllenNLP demos](http://demo.allennlp.org/machine-comprehension)
+						[Spacy demos](https://explosion.ai/demos/)
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						## How do we make computers try to understand language?
+						- The langauge of each person is different
+						- Language is ambigious
+						- Language requires contextual information
+						- it's constantly evolving
+					</section>
+					<!--<section>
+						<img src="imgs/deal-airline-food-dependency.jpg" />
+					</section>-->
+					<section data-markdown>
+						## Approaches in the past
+						1. Rule based
+						2. probabilistic models and linear classifiers.
+						3. deep learning
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						## Deep Learning
+						![deep learning](imgs/deep-learning-model.png)
+					</section>
+					<section data-markdown>
+							![deep learning](imgs/DL_model.jpeg)
+					</section>
+					<section data-markdown>
+						![deep learning](imgs/basic-deep-architectures-d1l4-deep-learning-for-speech-and-language.jpg)
+					</section>
+					<section data-markdown>
+						### How to deal with sequences
+						![deep learning](imgs/rnn.png)
+					</section>
+					<section data-markdown>
+						![deep learning](imgs/diags.jpeg)
+						- one to one: image to word
+						- one to many: word to sentence
+						- many to one: sentence to word
+						- many to many: translation, answer
+						- many to many: language model
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						## Deep learning for NLP
+						- from symbolic representations to tensors/vectors and embeddings
+						- how to represent words in the input layer?
+					</section>
+					<section data-markdown>
+						## One Hot encoding
+						<code>
+							word : n dimensions (for dictionary size)
+							car   : 1 0 0 		... 		0
+							dog   : 0 1 0 		... 		0
+							cat   : 0 0 1 		... 		0
+							apple : 0 0 0 		... 		1
+						</code>
+						- scales bad
+						- no relationship between words
+						- no context/semantic information
+					</section>
+					<section data-markdown>
+						## Word Embeddings
+						- much less dimensions then words in the dictionary
+						- relationship between words
+						- build from training language models
+					</section>
+					<section data-markdown>
+							<script type="text/template">
+								## Training word vectors (Word Embeddings)
+							</script>
+					</section>
+					<section>
+						<img src="imgs/training_data.png" style="background-color:beige"/>
+					</section>
+					<section>
+						<img src="imgs/embedding_layer.png" style="background-color:beige"/>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							## Language Models
+							- Predicting the next character / word in a sequence
+							<img src="imgs/char-rnn.jpeg" style="transform: translateY(-100px) scale(0.7);" />
+						</script>
+					</section>
+					<section>
+							<img src="imgs/karp_rnn_shake.png" /><br />
+							<a href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/" style="font-size: 30px;">The Unreasonable Effectiveness of Recurrent Neural Networks</a>
+					</section>
+					<section>
+						<img src="imgs/karp_rnn_LaTeX.png" style="transform: scale(0.8) translateY(-50px)"/>
+					</section>
+					<section data-markdown>
+						![word embedding](imgs/embedding.png)
+					</section>
+					<section data-markdown>
+						## Word Associations
+						![Word Associations](imgs/wems_assoc.jpg)
+					</section>
+					<section data-markdown>
+						![](imgs/company_ceo.jpg)
+					</section>
+					<section>
+						<img src="imgs/wems_languages.png" />
+					</section>
+					<section data-markdown>
+						![](imgs/associations.png)
+					</section>
+					<section >
+						<a href="http://localhost:8888/lab" target="blank_">Demo time</a>
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+						## Summary
+						- Language models builds Word Embeddings
+						- Word Embeddings are Word representations in tense spaces
+						- The contain semantical information about a word
+						- Association are reflected in the relationships of words
+						- There are problematic associations  <!-- .element: class="fragment" -->
+						</script>
+					</section>
+					<section data-markdown>
+						![Bias](imgs/bias.png)
+					</section>
+					<section>
+						<img src="imgs/bias_axis_male_female.png" /> <br />
+						<a href="https://arxiv.org/pdf/1607.06520.pdf">Man is to Computer Programmer as Woman is to Homemaker?
+							Debiasing Word Embeddings</a>
+					</section>
+					<section data-markdown>
+						Word Embedding Association Test
+						[Semantics derived automatically from language corpora necessarily contain human biases](http://randomwalker.info/publications/language-bias.pdf)
+					</section>
+					<section data-markdown>
+						Biases are consolidated
+						- Historical bias
+						[Are Emily and Greg More Employable than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination](http://www2.econ.iastate.edu/classes/econ321/orazem/bertrand_emily.pdf)
+						- underepresented group
+					</section>
+					<section>
+						<h2>Questions to ask</h2>
+						<ul>
+							<li fraction>Who build the model</li>
+							<li fraction>From what dataset was it build</li>
+							<li fraction>Where is the model used?</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+						## Real world applications and there problems
+						### Google Translate
+						![Translation from turkish](imgs/g_translate_turkish.png)
+					</section>
+					<section>
+						<img src="imgs/Visual_Semantic_Role_Labelling.png" />
+					</section>
+					<section data-markdown>
+						[Google Translate Keeps Spitting Out Creepy Religious Prophecies](https://medium.com/@attilaulbert/why-gender-bias-is-good-in-google-translate-478fcffa8c6)
+					</section>
+				</section>
+				<section>
+					<section data-markdown>
+							## Chatbots
+					</section>
+					<section data-markdown>
+							![Agent](imgs/child_and_raport_agent.png)
+
+							[Can virtual humans be more engaging than real ones? ](http://people.ict.usc.edu/~gratch/HCI07.pdf)
+					</section>
+					<section data-markdown>
+						### Microsofts chatbot Tay
+
+						![tay](imgs/Tay.png)
+					</section>
+					<section data-markdown>
+						## [Woebot](https://woebot.io/)
+						![Woebot](imgs/WoebotResearch.jpg)
+					</section>
+				</section>
+				<section data-markdown>
+					### how extreme bias becomes when fed with bad data 
+					[Norman A.I](http://norman-ai.mit.edu/)
+					![norman](imgs/norman.png)
+					
+				</section>
+				<section data-markdown>
+						Bias is identical to meaning, and
+						it is impossible to employ language meaningfully without incorporating human bias. 
+				</section>
+				<section data-markdown>
+					#### Thank you
+					Get in touch
+
+					transfluxus@posteo.de
+
+					twitter.com/ramin__
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
